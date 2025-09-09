@@ -1,0 +1,70 @@
+@if (method === 0) {
+<h3 class="text-3xl text-center mb-3">Welcome!</h3>
+<p class="text-lg mb-3">Select an option above to get started.</p>
+} @else if (method === "createUser") {
+<div>
+    <h3 class="text-2xl text-center mb-2">Add a user to the DB</h3>
+    <form class="flex flex-col" (ngSubmit)="onCreate()">
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input type="text" matInput placeholder="Erik" [(ngModel)]="name" name="name" required />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Mail@mail.se" [(ngModel)]="email" name="email" required />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="***" [(ngModel)]="password" name="password" required />
+        </mat-form-field>
+        <button class="w-2/5 mx-auto" matButton="filled" type="submit">Add</button>
+    </form>
+</div>
+} @else if (method === "getUser") {
+<!-- could be a select dropdown with all IDs already fetched into it?  -->
+<div>
+    <h3 class="text-2xl text-center mb-2">Fetch a user from the DB</h3>
+    <form class="flex flex-col" (ngSubmit)="onGet()">
+        <mat-form-field>
+            <mat-label>Enter the ID of the user</mat-label>
+            <input type="number" matInput placeholder="0" [(ngModel)]="id" name="id" required />
+        </mat-form-field>
+        <button class="w-2/5 mx-auto" matButton="filled" type="submit" >Fetch</button>
+    </form>
+</div>
+} @else if (method === "updateUser") {
+<div>
+    <h3 class="text-2xl text-center mb-2">Update a user in the DB</h3>
+    <form class="flex flex-col" (ngSubmit)="onUpdate()">
+        <mat-form-field>
+            <mat-label>ID</mat-label>
+            <input type="number" matInput placeholder="0" [(ngModel)]="id" name="id" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input type="text" matInput placeholder="Erik" [(ngModel)]="name" name="name" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Mail@mail.se" [(ngModel)]="email" name="email" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="***" [(ngModel)]="password" name="password" />
+        </mat-form-field>
+        <button class="w-2/5 mx-auto" matButton="filled" type="submit">Update</button>
+    </form>
+</div>
+} @else if (method === "deleteUser") {
+<!-- needs confirmation on press -->
+<div>
+    <h3 class="text-2xl text-center mb-2">Delete a user from the DB</h3>
+    <form class="flex flex-col" (ngSubmit)="onDelete()">
+        <mat-form-field>
+            <mat-label>Enter the ID of the user</mat-label>
+            <input type="number" matInput placeholder="ID" [(ngModel)]="id" name="id" required />
+        </mat-form-field>
+        <button class="w-2/5 mx-auto" matButton="filled" type="submit">Delete</button>
+    </form>
+</div>
+}

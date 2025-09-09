@@ -1,0 +1,10 @@
+<div class="mt-10 mb-10">
+    <button matButton="filled" [matMenuTriggerFor]="menu">API options</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="onCreateUserClick()">Add user</button>
+        <button mat-menu-item (click)="onGetUserClick()">Get user</button>
+        <button mat-menu-item (click)="onGetAllUsersClick()">Get all users </button>
+        <button mat-menu-item (click)="onUpdateUserClick()">Update user</button>
+        <button mat-menu-item (click)="onDeleteUserClick()">Delete user</button>
+    </mat-menu>
+</div>
