@@ -1,9 +1,9 @@
-<h1 class="text-center p-4 text-white text-4xl md:text-5xl">Angular Test</h1>
+<h1 class="text-center p-4 text-white cursor-pointer text-4xl md:text-5xl" (click)="setAllToNull()">Angular Test</h1>
 <div class=" flex justify-center items-center ">
-  <app-button-group (menuAction)="setMenuSignal($event)" (userArr)="setMultipleUsersSignal($event)" />
+  <app-button-group (apiOption)="setMethod($event)" (userArr)="setMultipleUsers($event)" />
 </div>
 <div class=" flex justify-center items-center ">
-  <app-input-fields (userChange)="setUserSignal($event)" [method]="method()" />
+  <app-input-fields (userChange)="setSingleUser($event)" [method]="method()" />
 </div>
 <div class=" flex justify-center items-center ">
   <app-rendered-window [singleUser]="singleUser()" [multipleUsers]="multipleUsers()" />

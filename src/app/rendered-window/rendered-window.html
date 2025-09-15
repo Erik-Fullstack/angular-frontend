@@ -4,7 +4,11 @@
     <p class="text-lg font-semibold">Email: <span class="font-normal">{{singleUser.email}}</span></p>
 </div>
 } @else if (multipleUsers) {
-<ul class="flex flex-col bg-white shadow rounded p-6 max-w-xl mx-auto my-6 space-y-4 lg:flex lg:max-w-5xl lg:space-y-0 lg:space-x-2 lg:flex-row lg:flex-wrap lg:justify-center">
+@if (multipleUsers.length === 0) {
+<h3 class="text-3xl text-center mb-3">No users in DB</h3>
+} @else {
+<ul
+    class="flex flex-col bg-white shadow rounded p-6 max-w-xl mx-auto my-6 space-y-4 lg:flex lg:max-w-5xl lg:space-y-0 lg:space-x-2 lg:flex-row lg:flex-wrap lg:justify-center">
     @for (user of multipleUsers; track user.name) {
     <li class="border-b last:border-b-0 pb-4 last:pb-0 lg:border-1 lg:p-5 lg:last:border-b lg:mb-2 lg:min-w-40">
         <p class="text-base font-semibold">Name: <span class="font-normal">{{user.name}}</span></p>
@@ -12,4 +16,5 @@
     </li>
     }
 </ul>
+}
 }

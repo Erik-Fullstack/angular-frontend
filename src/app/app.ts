@@ -16,15 +16,20 @@ export class App {
   singleUser = signal<User | null>(null);
   multipleUsers = signal<User[] | null>(null);
 
-  setMenuSignal(signal: MethodType) {
+  setMethod(signal: MethodType) {
     this.method.set(signal)
   }
-  setUserSignal(newUser: User) {
+  setSingleUser(newUser: User) {
     this.multipleUsers.set(null)
     this.singleUser.set(newUser)
   }
-  setMultipleUsersSignal(newUsers: User[]) {
+  setMultipleUsers(newUsers: User[]) {
     this.singleUser.set(null)
     this.multipleUsers.set(newUsers)
+  }
+  setAllToNull() {
+    this.method.set(0);
+    this.singleUser.set(null);
+    this.multipleUsers.set(null);
   }
 }

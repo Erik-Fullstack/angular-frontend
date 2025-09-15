@@ -37,7 +37,10 @@ export class InputFields {
         })
       });
 
-      if (!response.ok) throw new Error("Couldn't create new user. " + response.status)
+      if (!response.ok) {
+        const error = await response.json()
+        throw error.detail[0]
+      }
 
       const data = await response.json();
       console.log(data);
@@ -52,7 +55,10 @@ export class InputFields {
     if (!this.id) return;
     try {
       const response = await fetch(`http://localhost:8000/users/${this.id}`);
-      if (!response.ok) throw new Error("Error fetchin user. " + response.status);
+      if (!response.ok) {
+        const error = await response.json()
+        throw error.detail[0]
+      }
 
       const user = await response.json();
       this.userChange.emit(user);
@@ -82,7 +88,10 @@ export class InputFields {
         })
       });
 
-      if (!response.ok) throw new Error("Couldn't update user. " + response.status)
+      if (!response.ok) {
+        const error = await response.json()
+        throw error.detail[0]
+      }
 
       const data = await response.json();
       console.log(data);
@@ -105,7 +114,10 @@ export class InputFields {
           "Content-Type": "application/json"
         }
       });
-      if (!response.ok) throw new Error("Error deleting users. " + response.status);
+      if (!response.ok) {
+        const error = await response.json()
+        throw error.detail[0]
+      }
 
       const data = await response.json();
       console.log(data);

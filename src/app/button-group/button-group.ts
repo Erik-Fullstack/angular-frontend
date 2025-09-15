@@ -11,25 +11,28 @@ import { MethodType, User } from '../types';
 })
 export class ButtonGroup {
   @Output() userArr = new EventEmitter<User[]>();
-  @Output() menuAction = new EventEmitter<MethodType>();
+  @Output() apiOption = new EventEmitter<MethodType>();
 
   onCreateUserClick() {
-    this.menuAction.emit(MethodType.Create);
+    this.apiOption.emit(MethodType.Create);
   }
   onGetUserClick() {
-    this.menuAction.emit(MethodType.Read);
+    this.apiOption.emit(MethodType.Read);
   }
   onUpdateUserClick() {
-    this.menuAction.emit(MethodType.Update);
+    this.apiOption.emit(MethodType.Update);
   }
   onDeleteUserClick() {
-    this.menuAction.emit(MethodType.Delete);
+    this.apiOption.emit(MethodType.Delete);
   }
   async onGetAllUsersClick() {
-    this.menuAction.emit(MethodType.ReadMany);
+    this.apiOption.emit(MethodType.ReadMany);
     try {
       const response = await fetch(`http://localhost:8000/users/`);
-      if (!response.ok) throw new Error("Error fetchin users. " + response.status);
+      if (!response.ok) {
+        const error = await response.json()
+        throw error.detail[0]
+      }
 
       const users = await response.json();
       this.userArr.emit(users)

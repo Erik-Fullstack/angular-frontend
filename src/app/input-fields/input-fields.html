@@ -38,19 +38,19 @@
     <form class="flex flex-col" (ngSubmit)="onUpdate()">
         <mat-form-field>
             <mat-label>ID</mat-label>
-            <input type="number" matInput placeholder="0" [(ngModel)]="id" name="id" />
+            <input type="number" matInput placeholder="0" [(ngModel)]="id" name="id" required/>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Name</mat-label>
-            <input type="text" matInput placeholder="Erik" [(ngModel)]="name" name="name" />
+            <input type="text" matInput placeholder="Erik" [(ngModel)]="name" name="name" required/>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Email</mat-label>
-            <input type="email" matInput placeholder="Mail@mail.se" [(ngModel)]="email" name="email" />
+            <input type="email" matInput placeholder="Mail@mail.se" [(ngModel)]="email" name="email" required/>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Password</mat-label>
-            <input type="password" matInput placeholder="***" [(ngModel)]="password" name="password" />
+            <input type="password" matInput placeholder="***" [(ngModel)]="password" name="password" required/>
         </mat-form-field>
         <button class="w-2/5 mx-auto" matButton="filled" type="submit">Update</button>
     </form>
